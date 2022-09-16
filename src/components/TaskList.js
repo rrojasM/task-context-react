@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const TaskList = () => {
 
-  const { tasks, deleteTask } = useContext(GlobalContext);
+  const { tasks, deleteTask, taskDone } = useContext(GlobalContext);
 
   return (
     <div className='flex justify-center'>
@@ -19,15 +19,13 @@ const TaskList = () => {
             <div className='flex items-center'>
               <Link to={`/edit/${task.id}`} className='bg-gray-600 hover:bg-gray-500 py-2 px-4 mr-2 rounded'>Edit</Link>
               <button onClick={() => deleteTask(task.id)} className='bg-red-600 hover:bg-red-500 py-2 px-4 mr-2 rounded'>Delete</button>
-              <button className='bg-green-600 hover:bg-green-500 py-2 px-4 mr-2 rounded'>{task.done ? 'UNDONE':'DONE'}</button>
+              <button onClick={() => taskDone(task.id)} className='bg-green-600 hover:bg-green-500 py-2 px-4 mr-2 rounded'>{task.done ? "UNDONE" : "DONE"}</button>
             </div>
           </div>
         ))}
       </div>
-
     </div>
   )
-
 }
 
 export default TaskList

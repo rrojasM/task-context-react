@@ -28,7 +28,7 @@ export const ContextProvider = ({ children }) => {
     const addTask = (task) => {
         dispatch({
             type: 'ADD_TASK',
-            payload: { ...task, id: v4() }
+            payload: { ...task, id: v4(), done: false }
         })
     }
 
@@ -46,10 +46,10 @@ export const ContextProvider = ({ children }) => {
         })
     }
 
-    const taskDone = () => {
+    const taskDone = (id) => {
         dispatch({
-            TypeError: 'TASK_DONE',
-            payload: false
+            type: 'TASK_DONE',
+            payload: id
         })
     }
 

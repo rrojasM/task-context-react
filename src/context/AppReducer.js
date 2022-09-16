@@ -25,10 +25,19 @@ export default function appReducer(state, action) {
 
 
         case 'TASK_DONE':
+            const taskDone = state.tasks.map((task) => {
+                if (task.id === action.payload) {
+                    return { ...task, done: !task.done };
+                }
+                return task;
+            });
+            return {
+                ...state,
+                tasks: taskDone,
+            };
 
-            break
 
         default:
-            break;
+            return state
     }
 }
